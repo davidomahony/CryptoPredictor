@@ -1,6 +1,8 @@
 # Prediction Endpoint
+This file details code path when requests are processed on the prediction endpoint.
 
-
+## UML Diagram
+![Prediction UML Flow Diagram](./PredictionFlow.png)
 
 ## Classes & Interfaces
 
@@ -16,7 +18,6 @@ IResponseGenerator PredictionResponseGenerator
 PredictionDataResponse GeneratePredictionDataReponse(request)
 
 ### PredictorFactory : IPredictorFactory
-Hmmm
 
 ### IPredictorFactory
 PredictorBase GetPredictor();

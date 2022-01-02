@@ -1,8 +1,8 @@
 # Price Endpoint
+This file details code path when requests are processed on the price endpoint.
 
-
-
-## Classes & Interfaces
+## UML Diagram
+![Price UML Flow Diagram](./PriceUmlFlow.png)
 
 ### Price Controller
 ILogger logger   
