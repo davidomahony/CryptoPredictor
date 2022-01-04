@@ -1,5 +1,8 @@
 # Twitter Endpoint
+This file details code path when requests are processed on the Twitter endpoint.
 
+## UML Diagram
+![Twitter UML Flow Diagram](./TwitterUmlFlow.png)
 
 
 ## Classes & Interfaces
