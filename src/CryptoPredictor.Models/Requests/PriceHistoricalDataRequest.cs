@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CryptoPredictor.Models.Requests
 {
-    public class PriceHistoricalDataRequest
+    public class PriceHistoricalDataRequest : BaseRequest
     {
         [Required]
         public string CurrencyName { get; set; }

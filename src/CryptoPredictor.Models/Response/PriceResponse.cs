@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CryptoPredictor.Models.Response
 {
-    public class PriceResponse
+    public class PriceResponse : PriceResponse
     {
         public Guid RequestId { get; set; }
 

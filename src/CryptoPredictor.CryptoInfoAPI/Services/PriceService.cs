@@ -2,19 +2,15 @@
 using CryptoPredictor.Models;
 using CryptoPredictor.Models.Requests;
 using CryptoPredictor.Models.Response;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CryptoPredictor.CryptoInfoAPI.Services
 {
     public class PriceService
     {
         private readonly IDataRepository<HistoricalData> repository;
-        private readonly IReponseGenerator<PriceResponse> responseGenerator;
+        private readonly IResponseGenerator<PriceResponse> responseGenerator;
 
-        public PriceService(IDataRepository<HistoricalData> repository, IReponseGenerator<PriceResponse> responseGenerator)
+        public PriceService(IDataRepository<HistoricalData> repository, IResponseGenerator<PriceResponse> responseGenerator)
         {
             this.repository = repository;
             this.responseGenerator = responseGenerator;
@@ -22,7 +18,19 @@ namespace CryptoPredictor.CryptoInfoAPI.Services
 
         public PriceResponse GenerateHistoricalDataResponse(PriceHistoricalDataRequest request)
         {
-            return null;
+            var dataFromRepository = this.repository.GetData(request);
+
+            var generatedResponse = this.responseGenerator.GeneratorResponse(
+                dataFromRepository,
+                dataFromRepository.GetType(),
+                typeof(PriceHistoricalDataResponse));
+            
+            if (generatedResponse == null)
+            {
+                // Throw 5XX error
+            }
+
+            return generatedResponse;
         }
     }
 }
