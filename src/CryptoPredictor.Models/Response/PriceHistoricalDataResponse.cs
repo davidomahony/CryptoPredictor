@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CryptoPredictor.Models.Response
 {
-    public class PriceHistoricalDataResponse : PriceResponse
+    public class PriceHistoricalDataResponse
     {
         public IEnumerable<HistoricalData> Results { get; set; }
     }
