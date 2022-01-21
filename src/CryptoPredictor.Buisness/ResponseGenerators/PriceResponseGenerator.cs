@@ -7,7 +7,7 @@ namespace CryptoPredictor.Buisness.ResponseGenerators
 {
     public class PriceResponseGenerator : IResponseGenerator<PriceResponse>
     {
-        private IConverterFactory<IConverter<PriceResponse>> converterFactory;
+        private readonly IConverterFactory<IConverter<PriceResponse>> converterFactory;
 
         public PriceResponseGenerator(IConverterFactory<IConverter<PriceResponse>> converterFactory)
         {
@@ -20,10 +20,10 @@ namespace CryptoPredictor.Buisness.ResponseGenerators
 
             var response = converter.Convert(incomingData);
 
-            if (response == null)
-            {
-                // Throw 5XX error
-            }
+            //if (response == null)
+            //{
+            //    throw new InternalErrorException("Converter returned null or empy", baseRequest.RequestId);
+            //}
 
             response.RequestId = baseRequest.RequestId;
             response.TimeStamp = baseRequest.Timestamp;

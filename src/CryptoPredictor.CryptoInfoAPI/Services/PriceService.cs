@@ -7,10 +7,10 @@ namespace CryptoPredictor.CryptoInfoAPI.Services
 {
     public class PriceService
     {
-        private readonly IDataRepository<HistoricalData> repository;
+        private readonly IDataRepository<HistoricalData, PriceHistoricalDataRequest> repository;
         private readonly IResponseGenerator<PriceResponse> responseGenerator;
 
-        public PriceService(IDataRepository<HistoricalData> repository, IResponseGenerator<PriceResponse> responseGenerator)
+        public PriceService(IDataRepository<HistoricalData, PriceHistoricalDataRequest> repository, IResponseGenerator<PriceResponse> responseGenerator)
         {
             this.repository = repository;
             this.responseGenerator = responseGenerator;
@@ -21,14 +21,10 @@ namespace CryptoPredictor.CryptoInfoAPI.Services
             var dataFromRepository = this.repository.GetData(request);
 
             var generatedResponse = this.responseGenerator.GeneratorResponse(
+                request,
                 dataFromRepository,
                 dataFromRepository.GetType(),
                 typeof(PriceHistoricalDataResponse));
-            
-            if (generatedResponse == null)
-            {
-                // Throw 5XX error
-            }
 
             return generatedResponse;
         }

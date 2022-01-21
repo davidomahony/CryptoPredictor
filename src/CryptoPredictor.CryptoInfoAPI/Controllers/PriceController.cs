@@ -1,12 +1,10 @@
-﻿using CryptoPredictor.CryptoInfoAPI.Services;
+﻿using CryptoPredictor.Core.Exception;
+using CryptoPredictor.CryptoInfoAPI.Services;
 using CryptoPredictor.Models.Requests;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CryptoPredictor.CryptoInfoAPI.Controllers
 {
@@ -15,8 +13,8 @@ namespace CryptoPredictor.CryptoInfoAPI.Controllers
     [ApiVersion("1.0")]
     public class PriceController : ControllerBase
     {
-        private ILogger<PriceController> logger;
-        private PriceService priceService;
+        private readonly ILogger<PriceController> logger;
+        private readonly PriceService priceService;
 
         public PriceController(ILogger<PriceController> logger, PriceService priceService)
         {
@@ -39,8 +37,7 @@ namespace CryptoPredictor.CryptoInfoAPI.Controllers
         {
             if (requestToValidate.StartDate.CompareTo(requestToValidate.EndDate) > 0)
             {
-                // Once I have set up the middle ware for handling exceptions this will throw a different exception
-                throw new Exception();
+                throw new ClientErrorException("Invalid Date", requestToValidate.RequestId);
             }
         }
     }
