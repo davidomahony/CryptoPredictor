@@ -20,10 +20,10 @@ namespace CryptoPredictor.Buisness.ResponseGenerators
 
             var response = converter.Convert(incomingData);
 
-            if (response == null)
-            {
-                throw new InternalErrorException("Converter returned null or empy", baseRequest.RequestId);
-            }
+            //if (response == null)
+            //{
+            //    throw new InternalErrorException("Converter returned null or empy", baseRequest.RequestId);
+            //}
 
             response.RequestId = baseRequest.RequestId;
             response.TimeStamp = baseRequest.Timestamp;

@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CryptoPredictor.Core\CryptoPredictor.Core.csproj" />
-    <ProjectReference Include="..\CryptoPredictor.Models\CryptoPredictor.Models.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\CryptoPredictor.Core\CryptoPredictor.Core.csproj" />
+    <ProjectReference Include="..\CryptoPredictor.Models\CryptoPredictor.Models.csproj" />
   </ItemGroup>
 
 </Project>

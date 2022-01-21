@@ -2,8 +2,8 @@
 
 namespace CryptoPredictor.Core
 {
-    public interface IDataRepository<T>
+    public interface IDataRepository<out TResult, in TRequest>
     {
-        T GetData(object info);
+        TResult GetData(TRequest info);
     }
 }
